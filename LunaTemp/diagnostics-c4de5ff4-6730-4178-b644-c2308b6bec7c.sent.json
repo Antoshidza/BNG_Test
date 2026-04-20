@@ -1,0 +1,638 @@
+{
+    "BuildID": "c4de5ff4-6730-4178-b644-c2308b6bec7c",
+    "Command": "project:build",
+    "ProjectID": "7eb23bb9abb199e4f8a2e35812d994a9",
+    "ProjectStateHash": "909425130b5e165a5ddc52831cdc6a9a5586284c68bbf9a6b6dfc804ecea18dd",
+    "StageCompletedAt": 3,
+    "EarliestFatalError": 3,
+    "StartTime": 1776680082559,
+    "EndTime": 1776680101383,
+    "PlaygroundUserID": 34760,
+    "OperatingSystem": "win32",
+    "UnityPackageID": null,
+    "TargetPlatform": "develop",
+    "UnityVersion": "2022.3.62f2",
+    "LunaVersion": "7.1.0",
+    "LogCount": 26,
+    "Logs": [
+        {
+            "LogID": "286389ed-d9c8-4d12-af12-aeddea72de56",
+            "Order": 25,
+            "Timestamp": 1776680101582,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3007",
+            "Description": "You are not using any custom events",
+            "Details": [
+                "You are not using any custom events. It is recommended to use custom events to have a better understanding of the playable."
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "c45248ff-0374-403d-ae83-6ba96ad7bdcf",
+            "Order": 25,
+            "Timestamp": 1776680101582,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3011",
+            "Description": "You are not using any LunaPlaygroundFields attributes.",
+            "Details": [
+                "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+            ],
+            "DescriptionValues": null,
+            "DetailsValues": null,
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "2a53b695-ccb4-44c2-a30f-06855029717b",
+            "Order": 0,
+            "Timestamp": 1776680085339,
+            "Stage": 1,
+            "ErrorType": 3,
+            "ErrorCode": "LP1002",
+            "Description": "Repeat wrap mode used on a texture with non power-of-two dimensions, this might not be rendered correctly.",
+            "Details": [
+                "Repeat wrap mode used on 'LiberationSans SDF Atlas' texture at 'Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset' with non power-of-two dimensions, this might not be rendered correctly."
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                "LiberationSans SDF Atlas",
+                "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "27022e90-294e-4850-8bf7-2e0bb5cf5981",
+            "Order": 1,
+            "Timestamp": 1776680101372,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'Tweens' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "using Tweens;"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 4,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGameFinishedView.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "48a3f76d-b14e-4896-9818-8f405127a272",
+            "Order": 2,
+            "Timestamp": 1776680101377,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'Tweens' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "using Tweens;"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 5,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "c8ba30e6-9a17-4249-8981-aecc9b5aee1e",
+            "Order": 3,
+            "Timestamp": 1776680101377,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'ObjectPool<>' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "public class MonoPool<T> : ObjectPool<T>"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 8,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Pooling\\MonoPool.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "84ed6133-3655-4932-9851-83005b10f96d",
+            "Order": 4,
+            "Timestamp": 1776680101377,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'FloatTween' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 33,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGameFinishedView.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "fe803a24-b01f-4b49-b34c-fddec718665f",
+            "Order": 5,
+            "Timestamp": 1776680101377,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0103",
+            "Description": "The name 'EaseType' does not exist in the current context",
+            "Details": [
+                "easeType = EaseType.SineInOut,"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 38,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGameFinishedView.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "cc1f3840-9c93-48f2-888b-64bd5ff5c351",
+            "Order": 6,
+            "Timestamp": 1776680101378,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'GameObject' does not contain a definition for 'AddTween' and no accessible extension method 'AddTween' accepting a first argument of type 'GameObject' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 33,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGameFinishedView.cs",
+            "ClassName": "GameObject",
+            "MemberName": "AddTween",
+            "Severity": 1
+        },
+        {
+            "LogID": "c4eb266c-5ed7-4c6b-8e3d-019b4defcbf0",
+            "Order": 7,
+            "Timestamp": 1776680101378,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1729",
+            "Description": "'ObjectPool<T>' does not contain a constructor that takes 7 arguments",
+            "Details": [
+                ": base(factory,"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 19,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Pooling\\MonoPool.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "83c61bec-b831-452e-af73-5256776cbbc0",
+            "Order": 8,
+            "Timestamp": 1776680101378,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'FloatTween' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "stack.Root.gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 650,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "a6f6f3b8-2c17-4291-8fd8-ca77edfbf460",
+            "Order": 9,
+            "Timestamp": 1776680101378,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0103",
+            "Description": "The name 'EaseType' does not exist in the current context",
+            "Details": [
+                "easeType = EaseType.SineInOut,"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 655,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "9ddb6179-1fda-45a5-abcb-2ccfb7a67bb9",
+            "Order": 10,
+            "Timestamp": 1776680101378,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'GameObject' does not contain a definition for 'AddTween' and no accessible extension method 'AddTween' accepting a first argument of type 'GameObject' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "stack.Root.gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 650,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "GameObject",
+            "MemberName": "AddTween",
+            "Severity": 1
+        },
+        {
+            "LogID": "99432f9b-88a8-470c-a5c6-34f0d6c92d0a",
+            "Order": 11,
+            "Timestamp": 1776680101378,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'FloatTween' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "stack.Root.gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 676,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "9d210aab-6380-4b1c-a4a5-5de086d1db6f",
+            "Order": 12,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0103",
+            "Description": "The name 'EaseType' does not exist in the current context",
+            "Details": [
+                "easeType = EaseType.SineInOut,"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 681,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "06f6d031-2e93-4bb4-b173-e2804104d559",
+            "Order": 13,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'GameObject' does not contain a definition for 'AddTween' and no accessible extension method 'AddTween' accepting a first argument of type 'GameObject' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "stack.Root.gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 676,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "GameObject",
+            "MemberName": "AddTween",
+            "Severity": 1
+        },
+        {
+            "LogID": "fec448d7-edee-4922-9ce5-f2c867aaa326",
+            "Order": 14,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'FloatTween' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "tile.gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 755,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "fe95200c-8d3c-47c8-b77b-2f87c24805f8",
+            "Order": 15,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0103",
+            "Description": "The name 'EaseType' does not exist in the current context",
+            "Details": [
+                "easeType = EaseType.SineInOut,"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 761,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "306f9ca5-8d95-4191-a88d-0a9c35f4b53f",
+            "Order": 16,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'GameObject' does not contain a definition for 'AddTween' and no accessible extension method 'AddTween' accepting a first argument of type 'GameObject' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "tile.gameObject.AddTween(new FloatTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 755,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "GameObject",
+            "MemberName": "AddTween",
+            "Severity": 1
+        },
+        {
+            "LogID": "b2a8e4fa-95a8-4b00-8228-ab0aa8fcdf13",
+            "Order": 17,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0246",
+            "Description": "The type or namespace name 'LocalScaleTween' could not be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "tile.gameObject.AddTween(new LocalScaleTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 848,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "d0fd7166-86b5-4adb-b472-0ada833f2386",
+            "Order": 18,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS0103",
+            "Description": "The name 'EaseType' does not exist in the current context",
+            "Details": [
+                "easeType = EaseType.SineInOut,"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 853,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 1
+        },
+        {
+            "LogID": "665f1e7b-032a-4916-a04d-20b2d2d67023",
+            "Order": 19,
+            "Timestamp": 1776680101380,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'GameObject' does not contain a definition for 'AddTween' and no accessible extension method 'AddTween' accepting a first argument of type 'GameObject' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "tile.gameObject.AddTween(new LocalScaleTween"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 848,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "GameObject",
+            "MemberName": "AddTween",
+            "Severity": 1
+        },
+        {
+            "LogID": "5d175e88-cd22-472c-8c74-09abede8b837",
+            "Order": 20,
+            "Timestamp": 1776680101381,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'MonoPool<HexTileView>' does not contain a definition for 'Get' and no accessible extension method 'Get' accepting a first argument of type 'MonoPool<HexTileView>' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "HexTileView tile = _tilePool.Get();"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 929,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "MonoPool<HexTileView>",
+            "MemberName": "Get",
+            "Severity": 1
+        },
+        {
+            "LogID": "e6666ee1-60c4-4a5c-ab95-681b18858549",
+            "Order": 21,
+            "Timestamp": 1776680101381,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'MonoPool<HexTileView>' does not contain a definition for 'Release' and no accessible extension method 'Release' accepting a first argument of type 'MonoPool<HexTileView>' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "_tilePool.Release(tile);"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 941,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "MonoPool<HexTileView>",
+            "MemberName": "Release",
+            "Severity": 1
+        },
+        {
+            "LogID": "fd1dff7f-30c7-4d6a-86a1-070c709208bf",
+            "Order": 22,
+            "Timestamp": 1776680101381,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'MonoPool<TileCollapseVfxView>' does not contain a definition for 'Get' and no accessible extension method 'Get' accepting a first argument of type 'MonoPool<TileCollapseVfxView>' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "TileCollapseVfxView collapseVfx = _collapseVfxPool.Get();"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 968,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "MonoPool<TileCollapseVfxView>",
+            "MemberName": "Get",
+            "Severity": 1
+        },
+        {
+            "LogID": "491be2b6-1c5c-463c-842d-d55fd5865087",
+            "Order": 23,
+            "Timestamp": 1776680101383,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "CS1061",
+            "Description": "'MonoPool<TileCollapseVfxView>' does not contain a definition for 'Release' and no accessible extension method 'Release' accepting a first argument of type 'MonoPool<TileCollapseVfxView>' could be found (are you missing a using directive or an assembly reference?)",
+            "Details": [
+                "_collapseVfxPool.Release(view);"
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 977,
+            "FilePath": "E:\\UnityProjects\\BNG_Test\\Assets\\Source\\Game\\HexMerge\\HexGamePresenter.cs",
+            "ClassName": "MonoPool<TileCollapseVfxView>",
+            "MemberName": "Release",
+            "Severity": 1
+        }
+    ]
+}

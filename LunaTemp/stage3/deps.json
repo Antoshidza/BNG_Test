@@ -1,0 +1,43 @@
+{
+  "ignores": [],
+  "groups": [
+    [
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/EGameFinish.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexGame.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexGamePresenter.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexDragTutorialController.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexDragTutorialConfig.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Math/Hex/HexCoord.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexBoardModel.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexMergeResolver.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Math/Hex/HexLayout.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Math/Hex/HexMath.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Math/Hex/HexGrid.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Math/Hex/HexDirection.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexMergePlan.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexTile.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexCellModel.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexCellChanged.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexColor.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexBoardSetupConfig.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexCollapsed.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexColorPaletteConfig.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexDraggableStackSequenceConfig.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexTileAdded.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexTileAddition.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexTileView.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/TileCollapseVfxView.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Game/HexMerge/HexGameFinishedView.cs",
+      "E:/UnityProjects/BNG_Test/LunaTemp/stage3/processed-scripts/Assets/Source/Pooling/MonoPool.cs"
+    ],
+    [
+      "E:/UnityProjects/Playworks/pipeline/templates/LunaCompiler/Scripts/Properties/AssemblyInfo.cs"
+    ],
+    [
+      "E:/UnityProjects/Playworks/pipeline/templates/LunaCompiler/Scripts/Sources/OtherDummyScript.cs"
+    ],
+    [
+      "E:/UnityProjects/Playworks/pipeline/templates/LunaCompiler/Scripts/obj/Debug/.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccc2120077db4e4fbe63950d9e0ef87, type: 3}
+  m_Name: HexBoardSetupConfig
+  m_EditorClassIdentifier: 
+  _width: 12
+  _height: 11
+  _cells:
+  - _position: {x: 0, y: 8}
+    _color: 3
+    _amount: 2
+  - _position: {x: 0, y: 7}
+    _color: 0
+    _amount: 3
+  - _position: {x: 0, y: 7}
+    _color: 6
+    _amount: 2
+  - _position: {x: 0, y: 6}
+    _color: 7
+    _amount: 7
+  - _position: {x: 0, y: 3}
+    _color: 5
+    _amount: 7
+  - _position: {x: 0, y: 4}
+    _color: 5
+    _amount: 3
+  - _position: {x: 0, y: 4}
+    _color: 6
+    _amount: 8
+  - _position: {x: 1, y: 6}
+    _color: 1
+    _amount: 8

@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using Tweens;
 using Source.Pooling;
+using Source.Optional;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -24,6 +25,7 @@ namespace Source.Game.HexMerge
         [SerializeField] private TileCollapseVfxView _collapseVfxPrefab;
         [SerializeField] private HexDraggableStackSequenceConfig _draggableStackSequenceConfig;
         [SerializeField] private HexGameFinishedView _hexGameFinishedView;
+        [SerializeField] private Shader _tileShader;
 
         [Header("Layout")]
         [Min(0.01f)]
@@ -140,18 +142,16 @@ namespace Source.Game.HexMerge
             }
         }
 
-        public bool TryGetDraggableWorldPosition(int draggableIndex, out Vector3 worldPosition)
+        public Option<Vector3> GetDraggableWorldPosition(int draggableIndex)
         {
             DraggableStackRuntime stack = GetDraggableStackByIndex(draggableIndex);
 
             if (stack == null)
             {
-                worldPosition = default;
-                return false;
+                return Option<Vector3>.None;
             }
 
-            worldPosition = stack.Root.position;
-            return true;
+            return Option<Vector3>.Some(stack.Root.position);
         }
 
         public Vector3 GetGridCellWorldPosition(Vector2Int offsetCoord) => 
@@ -211,14 +211,14 @@ namespace Source.Game.HexMerge
 
         private void BuildTileMaterials()
         {
-            var baseMaterial = _tilePrefab.Renderer.sharedMaterial;
+            var baseMaterial = new Material(_tileShader);
 
             var colors = _hexColorPaletteConfig.Colors;
             _tileMaterialsByColor = new Material[colors.Length];
 
             for (int i = 0; i < colors.Length; i++)
             {
-                var material = new Material(baseMaterial) { name = $"{baseMaterial.name}_{(HexColor)i}" };
+                var material = new Material(baseMaterial);
                 material.SetColor(BaseColorId, colors[i]);
                 _tileMaterialsByColor[i] = material;
             }
@@ -380,7 +380,9 @@ namespace Source.Game.HexMerge
                 return;
             }
 
-            if (!TryGetPointerWorldPoint(_tileBaseHeight, out Vector3 pointerWorld))
+            Option<Vector3> pointerWorld = GetPointerWorldPoint(_tileBaseHeight);
+
+            if (!pointerWorld.IsSome)
             {
                 return;
             }
@@ -398,7 +400,7 @@ namespace Source.Game.HexMerge
                 }
 
                 Vector3 stackPosition = stack.Root.position;
-                float distanceSqr = new Vector2(stackPosition.x - pointerWorld.x, stackPosition.z - pointerWorld.z).sqrMagnitude;
+                float distanceSqr = new Vector2(stackPosition.x - pointerWorld.Value.x, stackPosition.z - pointerWorld.Value.z).sqrMagnitude;
 
                 if (distanceSqr > bestDistanceSqr)
                 {
@@ -415,7 +417,7 @@ namespace Source.Game.HexMerge
             }
 
             _draggedStack = bestStack;
-            _dragOffset = bestStack.Root.position - pointerWorld;
+            _dragOffset = bestStack.Root.position - pointerWorld.Value;
             _dragOffset.y = 0f;
             _dragBaseY = bestStack.Root.position.y;
             Vector3 liftedPosition = bestStack.Root.position;
@@ -426,13 +428,15 @@ namespace Source.Game.HexMerge
 
         private void UpdateDraggedStackPosition()
         {
-            if (!TryGetPointerWorldPoint(_draggedStack.Root.position.y, out Vector3 pointerWorld))
+            Option<Vector3> pointerWorld = GetPointerWorldPoint(_draggedStack.Root.position.y);
+
+            if (!pointerWorld.IsSome)
             {
                 _dragCellMarker.SetActive(false);
                 return;
             }
 
-            Vector3 targetPosition = pointerWorld + _dragOffset;
+            Vector3 targetPosition = pointerWorld.Value + _dragOffset;
             targetPosition.y = _dragBaseY + _dragLiftHeight;
             _draggedStack.Root.position = targetPosition;
 
@@ -445,16 +449,18 @@ namespace Source.Game.HexMerge
             _draggedStack = null;
             _dragCellMarker.SetActive(false);
 
-            if (TryGetDropCoord(draggedStack.Root.position, out HexCoord coord))
+            Option<HexCoord> coord = GetDropCoord(draggedStack.Root.position);
+
+            if (coord.IsSome)
             {
-                if (CanPlaceDraggedStack != null && !CanPlaceDraggedStack.Invoke(draggedStack.SlotIndex, coord))
+                if (CanPlaceDraggedStack != null && !CanPlaceDraggedStack.Invoke(draggedStack.SlotIndex, coord.Value))
                 {
                     DragCancelled?.Invoke(draggedStack.SlotIndex);
                     ReturnDraggedStackToSpawn(draggedStack);
                     return;
                 }
 
-                PlaceDraggedStack(draggedStack, coord);
+                PlaceDraggedStack(draggedStack, coord.Value);
                 return;
             }
 
@@ -594,44 +600,44 @@ namespace Source.Game.HexMerge
             return new DraggableStackRuntime(stackSetup, slotIndex, position, stackTransform, tiles);
         }
 
-        private bool TryGetPointerWorldPoint(float planeY, out Vector3 pointerWorld)
+        private Option<Vector3> GetPointerWorldPoint(float planeY)
         {
             Ray pointerRay = _camera.ScreenPointToRay(Input.mousePosition);
             Plane plane = new Plane(Vector3.up, new Vector3(0f, planeY, 0f));
 
             if (!plane.Raycast(pointerRay, out float enter))
             {
-                pointerWorld = default;
-                return false;
+                return Option<Vector3>.None;
             }
 
-            pointerWorld = pointerRay.GetPoint(enter);
-            return true;
+            return Option<Vector3>.Some(pointerRay.GetPoint(enter));
         }
 
-        private bool TryGetDropCoord(Vector3 stackPosition, out HexCoord coord)
+        private Option<HexCoord> GetDropCoord(Vector3 stackPosition)
         {
             HexLayout layout = new HexLayout(_hexSize, transform.position);
-            coord = layout.WorldToHex(stackPosition);
+            HexCoord coord = layout.WorldToHex(stackPosition);
 
             if (!_hexGame.BoardModel.Exist(coord))
             {
-                return false;
+                return Option<HexCoord>.None;
             }
 
-            return _hexGame.BoardModel[coord].IsEmpty;
+            return _hexGame.BoardModel[coord].IsEmpty ? Option<HexCoord>.Some(coord) : Option<HexCoord>.None;
         }
 
         private void UpdateDragCellMarker(Vector3 stackPosition)
         {
-            if (!TryGetDropCoord(stackPosition, out HexCoord coord))
+            Option<HexCoord> coord = GetDropCoord(stackPosition);
+
+            if (!coord.IsSome)
             {
                 _dragCellMarker.SetActive(false);
                 return;
             }
 
             _dragCellMarker.SetActive(true);
-            _dragCellMarker.transform.position = GetCellWorldPosition(coord);
+            _dragCellMarker.transform.position = GetCellWorldPosition(coord.Value);
         }
 
         private void PlaceDraggedStack(DraggableStackRuntime stack, HexCoord coord)
@@ -733,7 +739,7 @@ namespace Source.Game.HexMerge
 
             toTiles.RemoveAll(tile => tile == null);
 
-            var movingTiles = new List<HexTileView> { fromTiles[^1] };
+            var movingTiles = new List<HexTileView> { fromTiles[fromTiles.Count - 1] };
             fromTiles.RemoveAt(fromTiles.Count - 1);
             toTiles.AddRange(movingTiles);
             float mergeDuration = GetAdjustedDuration(_mergeDuration);
@@ -1150,11 +1156,11 @@ namespace Source.Game.HexMerge
             public float Delay { get; }
         }
 
-        [System.Serializable]
+        [Serializable]
         private struct AudioCue
         {
-            [field: SerializeField] public AudioClip Clip { get; private set; }
-            [field: SerializeField] public float Pitch { get; private set; }
+            public AudioClip Clip;
+            public float Pitch;
         }
 
 #if UNITY_EDITOR

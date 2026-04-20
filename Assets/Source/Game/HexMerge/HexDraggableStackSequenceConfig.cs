@@ -22,6 +22,6 @@ public struct HexDraggableStackSetup
 [Serializable]
 public struct HexDraggableTileGroupSetup
 {
-    [field: SerializeField] public HexColor Color { get; private set; }
-    [field: SerializeField] public int Amount { get; private set; }
+    public HexColor Color;
+    public int Amount;
 }

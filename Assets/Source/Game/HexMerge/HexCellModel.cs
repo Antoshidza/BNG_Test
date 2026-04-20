@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Source.Optional;
 
 public sealed class HexCellModel
 {
@@ -11,40 +12,43 @@ public sealed class HexCellModel
 
     public IReadOnlyList<HexTile> Tiles => _tiles;
 
-    public bool TryPeekTop(out HexTile tile)
+    public Option<HexTile> PeekTop()
     {
         if (_tiles.Count == 0)
         {
-            tile = default;
-            return false;
+            return Option<HexTile>.None;
         }
 
-        tile = _tiles[^1];
-        return true;
+        return Option<HexTile>.Some(_tiles[_tiles.Count - 1]);
     }
 
-    public HexColor PeekTopColor() => 
-        !TryPeekTop(out var tile) ? throw new InvalidOperationException("Cell is empty.") : tile.Color;
+    public HexColor PeekTopColor()
+    {
+        Option<HexTile> tile = PeekTop();
+        return !tile.IsSome ? throw new InvalidOperationException("Cell is empty.") : tile.Value.Color;
+    }
 
     public void Push(HexTile tile) => 
         _tiles.Add(tile);
 
-    public HexTile Pop() => 
-        !TryPop(out var tile) ? throw new InvalidOperationException("Cell is empty.") : tile;
+    public HexTile Pop()
+    {
+        Option<HexTile> tile = PopOption();
+        return !tile.IsSome ? throw new InvalidOperationException("Cell is empty.") : tile.Value;
+    }
 
-    public bool TryPop(out HexTile tile)
+    public Option<HexTile> PopOption()
     {
         int lastIndex = _tiles.Count - 1;
 
         if (lastIndex < 0)
         {
-            tile = default;
-            return false;
+            return Option<HexTile>.None;
         }
 
-        tile = _tiles[lastIndex];
+        HexTile tile = _tiles[lastIndex];
         _tiles.RemoveAt(lastIndex);
-        return true;
+        return Option<HexTile>.Some(tile);
     }
 
     public void RemoveRange(int index, int count)

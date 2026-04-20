@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Source.Optional;
 
 public sealed class HexBoardModel
 {
     private const int CollapseThreshold = 10;
 
-    private readonly HexGrid<HexCellModel> _cells;
-    private readonly Queue<HexCoord> _mergeQueue = new Queue<HexCoord>();
-    private readonly HashSet<HexCoord> _queuedCoords = new HashSet<HexCoord>();
+    private HexGrid<HexCellModel> _cells;
+    private Queue<HexCoord> _mergeQueue = new Queue<HexCoord>();
+    private HashSet<HexCoord> _queuedCoords = new HashSet<HexCoord>();
 
     private int _batchDepth;
     private bool _isProcessingMerges;
@@ -31,7 +32,7 @@ public sealed class HexBoardModel
         var coords = _cells.EnumerateCoords();
 
         while (coords.MoveNext()) 
-            _cells[coords.Current] = new HexCellModel();
+            _cells.Set(coords.Current, new HexCellModel());
     }
 
     public bool Exist(HexCoord coord)
@@ -40,19 +41,18 @@ public sealed class HexBoardModel
         return offset.x >= 0 && offset.x < Width && offset.y >= 0 && offset.y < Height;
     }
 
-    public bool TryGetTopTile(HexCoord coord, out HexTile tile)
+    public Option<HexTile> GetTopTile(HexCoord coord)
     {
         if (!_cells.Contains(coord))
         {
-            tile = default;
-            return false;
+            return Option<HexTile>.None;
         }
 
-        return _cells[coord].TryPeekTop(out tile);
+        return _cells[coord].PeekTop();
     }
 
-    public bool TryGetNeighborCoord(HexCoord coord, HexDirection direction, out HexCoord neighbor) => 
-        _cells.TryGetNeighbor(coord, direction, out neighbor);
+    public Option<HexCoord> GetNeighborCoord(HexCoord coord, HexDirection direction) => 
+        _cells.GetNeighborCoord(coord, direction);
 
     public void BeginBatchUpdate()
     {
@@ -126,25 +126,25 @@ public sealed class HexBoardModel
         }
     }
 
-    public bool TryRemoveTopTile(HexCoord coord, out HexTile tile)
+    public Option<HexTile> RemoveTopTile(HexCoord coord)
     {
         if (!_cells.Contains(coord))
         {
-            tile = default;
-            return false;
+            return Option<HexTile>.None;
         }
 
         HexCellModel cell = _cells[coord];
-
-        if (!cell.TryPop(out tile))
+        Option<HexTile> tile = cell.PopOption();
+        
+        if (!tile.IsSome)
         {
-            return false;
+            return Option<HexTile>.None;
         }
 
         NotifyCellChanged(coord);
         EnqueueForMerge(coord);
         TryProcessPendingMerges();
-        return true;
+        return tile;
     }
 
     public void ProcessPendingMerges()
@@ -185,12 +185,14 @@ public sealed class HexBoardModel
             HexCoord pivot = _mergeQueue.Dequeue();
             _queuedCoords.Remove(pivot);
 
-            if (!HexMergeResolver.TryResolve(this, pivot, out HexMergePlan plan))
+            Option<HexMergePlan> plan = HexMergeResolver.Resolve(this, pivot);
+
+            if (!plan.IsSome)
             {
                 continue;
             }
 
-            ApplyMerge(plan);
+            ApplyMerge(plan.Value);
         }
     }
 
@@ -199,16 +201,18 @@ public sealed class HexBoardModel
         HexCellModel fromCell = GetCellOrThrow(plan.From);
         HexCellModel toCell = GetCellOrThrow(plan.To);
 
-        if (!fromCell.TryPop(out HexTile tile))
+        Option<HexTile> tile = fromCell.PopOption();
+
+        if (!tile.IsSome)
         {
             return;
         }
 
-        toCell.Push(tile);
+        toCell.Push(tile.Value);
 
         NotifyCellChanged(plan.From);
         NotifyCellChanged(plan.To);
-        Merged?.Invoke(new HexMergePlan(tile, plan.From, plan.To, plan.Path));
+        Merged?.Invoke(new HexMergePlan(tile.Value, plan.From, plan.To, plan.Path));
 
         EnqueueForMerge(plan.From);
         EnqueueForMerge(plan.To);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Source.Optional;
 
 public sealed class HexGrid<T> : IEnumerable<T>
 {
@@ -31,14 +32,24 @@ public sealed class HexGrid<T> : IEnumerable<T>
 
     public int Count { get; }
 
-    public ref T this[int index] => ref _items[index];
+    public T this[int index] => _items[index];
 
-    public ref T this[HexCoord coord]
+    public T this[HexCoord coord]
     {
         get
         {
-            return ref _items[GetIndex(coord)];
+            return _items[GetIndex(coord)];
         }
+    }
+
+    public void Set(int index, T value)
+    {
+        _items[index] = value;
+    }
+
+    public void Set(HexCoord coord, T value)
+    {
+        Set(GetIndex(coord), value);
     }
 
     public bool Contains(HexCoord coord)
@@ -54,26 +65,26 @@ public sealed class HexGrid<T> : IEnumerable<T>
 
     public int GetIndex(HexCoord coord)
     {
-        if (!TryGetIndex(coord, out int index))
+        Option<int> index = GetIndexOption(coord);
+
+        if (!index.IsSome)
         {
             throw new ArgumentOutOfRangeException(nameof(coord), $"Coordinate {coord} is outside grid bounds.");
         }
 
-        return index;
+        return index.Value;
     }
 
-    public bool TryGetIndex(HexCoord coord, out int index)
+    public Option<int> GetIndexOption(HexCoord coord)
     {
         Vector2Int offset = HexMath.ToOffset(coord);
 
         if (offset.x < 0 || offset.x >= Width || offset.y < 0 || offset.y >= Height)
         {
-            index = -1;
-            return false;
+            return Option<int>.None;
         }
 
-        index = offset.x + (offset.y * Width);
-        return true;
+        return Option<int>.Some(offset.x + (offset.y * Width));
     }
 
     public HexCoord CoordAt(int index)
@@ -88,33 +99,35 @@ public sealed class HexGrid<T> : IEnumerable<T>
         return HexMath.FromOffset(x, y);
     }
 
-    public bool TryGet(HexCoord coord, out T value)
+    public Option<T> GetOption(HexCoord coord)
     {
-        if (TryGetIndex(coord, out int index))
+        Option<int> index = GetIndexOption(coord);
+
+        if (index.IsSome)
         {
-            value = _items[index];
-            return true;
+            return Option<T>.Some(_items[index.Value]);
         }
 
-        value = default;
-        return false;
+        return Option<T>.None;
     }
 
     public bool TrySet(HexCoord coord, T value)
     {
-        if (TryGetIndex(coord, out int index))
+        Option<int> index = GetIndexOption(coord);
+
+        if (index.IsSome)
         {
-            _items[index] = value;
+            _items[index.Value] = value;
             return true;
         }
 
         return false;
     }
 
-    public bool TryGetNeighbor(HexCoord coord, HexDirection direction, out HexCoord neighbor)
+    public Option<HexCoord> GetNeighborCoord(HexCoord coord, HexDirection direction)
     {
-        neighbor = HexMath.Neighbor(coord, direction);
-        return Contains(neighbor);
+        HexCoord neighbor = HexMath.Neighbor(coord, direction);
+        return Contains(neighbor) ? Option<HexCoord>.Some(neighbor) : Option<HexCoord>.None;
     }
 
     public void Clear()

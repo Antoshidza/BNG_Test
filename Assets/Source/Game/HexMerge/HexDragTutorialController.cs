@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Source.Optional;
 
 namespace Source.Game.HexMerge
 {
@@ -152,14 +153,16 @@ namespace Source.Game.HexMerge
         {
             while (!_isCompleted)
             {
-                if (!_hexGamePresenter.TryGetDraggableWorldPosition(_config.EnabledDraggableIndex, out Vector3 draggableWorld))
+                Option<Vector3> draggableWorld = _hexGamePresenter.GetDraggableWorldPosition(_config.EnabledDraggableIndex);
+
+                if (!draggableWorld.IsSome)
                 {
                     yield return null;
                     continue;
                 }
 
                 Vector3 targetWorld = _hexGamePresenter.GetGridCellWorldPosition(_config.TargetCellOffset);
-                Vector2 start = WorldToCanvasPosition(draggableWorld);
+                Vector2 start = WorldToCanvasPosition(draggableWorld.Value);
                 Vector2 end = WorldToCanvasPosition(targetWorld);
                 _hand.anchoredPosition = start;
                 _hand.gameObject.SetActive(true);

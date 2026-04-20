@@ -1,6 +1,6 @@
 using System;
 
-public readonly struct HexCoord : IEquatable<HexCoord>
+public struct HexCoord : IEquatable<HexCoord>
 {
     public HexCoord(int q, int r)
     {

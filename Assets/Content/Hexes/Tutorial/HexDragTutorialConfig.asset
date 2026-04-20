@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e25ab49faa0da4f80f0fc6e26630d2, type: 3}
   m_Name: HexDragTutorialConfig
   m_EditorClassIdentifier: 
-  <EnabledDraggableIndex>k__BackingField: 0
-  <TargetCellOffset>k__BackingField: {x: 0, y: 5}
-  <HandShowDelay>k__BackingField: 1
-  <HandMoveDuration>k__BackingField: 0.9
-  <HandLoopDelay>k__BackingField: 0.2
+  EnabledDraggableIndex: 0
+  TargetCellOffset: {x: 0, y: 5}
+  HandShowDelay: 1
+  HandMoveDuration: 0.9
+  HandLoopDelay: 0.2

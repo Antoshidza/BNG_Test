@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Source.Optional;
 
 public static class HexMergeResolver
 {
@@ -13,17 +14,18 @@ public static class HexMergeResolver
         new AxisDefinition(HexDirection.TopLeft, HexDirection.BottomRight, 2)
     };
 
-    public static bool TryResolve(HexBoardModel board, HexCoord pivot, out HexMergePlan plan)
+    public static Option<HexMergePlan> Resolve(HexBoardModel board, HexCoord pivot)
     {
         if (board == null)
         {
             throw new ArgumentNullException(nameof(board));
         }
 
-        if (!board.TryGetTopTile(pivot, out HexTile tile))
+        Option<HexTile> tile = board.GetTopTile(pivot);
+
+        if (!tile.IsSome)
         {
-            plan = default;
-            return false;
+            return Option<HexMergePlan>.None;
         }
 
         List<HexCoord> bestLine = null;
@@ -33,7 +35,7 @@ public static class HexMergeResolver
 
         for (int i = 0; i < Axes.Length; i++)
         {
-            List<HexCoord> line = BuildLine(board, pivot, tile.Color, Axes[i]);
+            List<HexCoord> line = BuildLine(board, pivot, tile.Value.Color, Axes[i]);
 
             if (line.Count < 2)
             {
@@ -58,14 +60,12 @@ public static class HexMergeResolver
 
         if (bestLine == null)
         {
-            plan = default;
-            return false;
+            return Option<HexMergePlan>.None;
         }
 
         HexCoord from = bestLine[0];
         HexCoord to = bestLine[1];
-        plan = new HexMergePlan(tile, from, to, bestLine.ToArray());
-        return true;
+        return Option<HexMergePlan>.Some(new HexMergePlan(tile.Value, from, to, bestLine.ToArray()));
     }
 
     private static List<HexCoord> BuildLine(HexBoardModel board, HexCoord pivot, HexColor color, AxisDefinition axis)
@@ -84,12 +84,24 @@ public static class HexMergeResolver
     {
         HexCoord current = start;
 
-        while (board.TryGetNeighborCoord(current, direction, out HexCoord neighbor) &&
-               board.TryGetTopTile(neighbor, out HexTile tile) &&
-               tile.Color == color)
+        while (true)
         {
-            results.Add(neighbor);
-            current = neighbor;
+            Option<HexCoord> neighbor = board.GetNeighborCoord(current, direction);
+
+            if (!neighbor.IsSome)
+            {
+                return;
+            }
+
+            Option<HexTile> tile = board.GetTopTile(neighbor.Value);
+
+            if (!tile.IsSome || tile.Value.Color != color)
+            {
+                return;
+            }
+
+            results.Add(neighbor.Value);
+            current = neighbor.Value;
         }
     }
 

@@ -156,7 +156,6 @@ MonoBehaviour:
   _boardSetup: {fileID: 11400000, guid: 8c727e374b8ffe94b9b7d9d9f0c19573, type: 2}
   _draggableStackSequenceConfig: {fileID: 11400000, guid: a53d816362da1db41b36749451edb091,
     type: 2}
-  _gameDurationSeconds: 60
 --- !u!4 &4831969
 Transform:
   m_ObjectHideFlags: 0
@@ -198,6 +197,7 @@ MonoBehaviour:
   _draggableStackSequenceConfig: {fileID: 11400000, guid: a53d816362da1db41b36749451edb091,
     type: 2}
   _hexGameFinishedView: {fileID: 2013145847}
+  _tileShader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   _hexSize: 1
   _stackHeightStep: 0.15
   _tileBaseHeight: 0.37
@@ -218,13 +218,11 @@ MonoBehaviour:
   _dragLiftHeight: 1
   _tileAudioSource: {fileID: 562035947}
   _mergeAudio:
-    <Clip>k__BackingField: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a,
-      type: 3}
-    <Pitch>k__BackingField: 1
+    Clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+    Pitch: 1
   _collapseAudio:
-    <Clip>k__BackingField: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a,
-      type: 3}
-    <Pitch>k__BackingField: 2
+    Clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+    Pitch: 2
   _showCellCoords: 1
   _coordLabelHeight: 0.1
 --- !u!114 &4831971

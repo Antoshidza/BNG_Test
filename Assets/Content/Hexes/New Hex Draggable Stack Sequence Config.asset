@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stacks:
   - _groups:
-    - <Color>k__BackingField: 1
-      <Amount>k__BackingField: 4
-    - <Color>k__BackingField: 6
-      <Amount>k__BackingField: 4
+    - Color: 1
+      Amount: 4
+    - Color: 6
+      Amount: 4
   - _groups:
-    - <Color>k__BackingField: 7
-      <Amount>k__BackingField: 5
-    - <Color>k__BackingField: 6
-      <Amount>k__BackingField: 8
+    - Color: 7
+      Amount: 5
+    - Color: 6
+      Amount: 8
   - _groups:
-    - <Color>k__BackingField: 0
-      <Amount>k__BackingField: 7
+    - Color: 0
+      Amount: 7
   - _groups:
-    - <Color>k__BackingField: 3
-      <Amount>k__BackingField: 4
+    - Color: 3
+      Amount: 4
   - _groups:
-    - <Color>k__BackingField: 3
-      <Amount>k__BackingField: 4
+    - Color: 3
+      Amount: 4

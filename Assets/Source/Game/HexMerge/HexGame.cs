@@ -13,8 +13,10 @@ public sealed class HexGame : MonoBehaviour
 
     public event Action<EGameFinish> GameFinished;
 
-    private void Awake() => 
+    private void Awake()
+    {
         CreateBoardModel();
+    }
 
     private void Start()
     {

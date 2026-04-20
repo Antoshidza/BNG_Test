@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733220355f71415898a68cd2a125bf42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Renderer>k__BackingField: {fileID: 3802778712621841282}
+  Renderer: {fileID: 3802778712621841282}
 --- !u!23 &3802778712621841282 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 348fc803e5b14a44d953dc7cb6c009d8,
